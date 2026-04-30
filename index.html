@@ -7,7 +7,14 @@
   <meta name="description" content="Fidelización, automatización y marketing en un solo sistema. Para los restaurantes que se niegan a ser olvidados." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    @font-face { font-family: 'Brice'; font-weight: 400; font-style: normal; font-display: swap; src: url('Brice_Font/Brice-Regular.woff2') format('woff2'); }
+    @font-face { font-family: 'Brice'; font-weight: 600; font-style: normal; font-display: swap; src: url('Brice_Font/Brice-Semi-Bold.woff2') format('woff2'); }
+    @font-face { font-family: 'Brice'; font-weight: 700; font-style: normal; font-display: swap; src: url('Brice_Font/Brice-Bold.woff2') format('woff2'); }
+    @font-face { font-family: 'Brice'; font-weight: 800; font-style: normal; font-display: swap; src: url('Brice_Font/Brice-Black.woff2') format('woff2'); }
+    @font-face { font-family: 'Brice'; font-weight: 900; font-style: normal; font-display: swap; src: url('Brice_Font/Brice-Black.woff2') format('woff2'); }
+  </style>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -31,7 +38,7 @@
     body {
       background: var(--bg);
       color: var(--text);
-      font-family: 'Inter', sans-serif;
+      font-family: 'Montserrat', sans-serif;
       font-size: 16px;
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
@@ -65,7 +72,7 @@
       margin-bottom: 16px; display: block;
     }
 
-    h1, h2, h3, h4 { font-family: 'Barlow Condensed', sans-serif; line-height: 1.05; letter-spacing: -.01em; }
+    h1, h2, h3, h4 { font-family: 'Brice', sans-serif; line-height: 1.05; letter-spacing: -.01em; }
 
     /* ───── BUTTONS ───── */
     .btn {
@@ -137,7 +144,7 @@
       max-width: 1140px; margin: 0 auto; padding: 0 24px;
     }
     .nav-logo {
-      font-family: 'Barlow Condensed', sans-serif;
+      font-family: 'Brice', sans-serif;
       font-size: 26px; font-weight: 900;
       letter-spacing: .05em; color: var(--text);
       text-decoration: none; transition: opacity .2s;
@@ -237,7 +244,7 @@
     .stat-item:hover { background: rgba(255,92,26,.04); }
     .stat-item:last-child { border-right: none; }
     .stat-num {
-      font-family: 'Barlow Condensed', sans-serif;
+      font-family: 'Brice', sans-serif;
       font-size: 54px; font-weight: 900;
       color: var(--orange); line-height: 1;
       display: block;
@@ -270,7 +277,7 @@
       box-shadow: 0 8px 40px rgba(255,92,26,.1);
     }
     .problem-card-num {
-      font-family: 'Barlow Condensed', sans-serif;
+      font-family: 'Brice', sans-serif;
       font-size: 52px; font-weight: 900;
       color: var(--orange); line-height: 1; margin-bottom: 12px;
     }
@@ -298,7 +305,7 @@
       background: radial-gradient(ellipse at center, rgba(255,92,26,.08) 0%, transparent 65%);
     }
     .zero-num {
-      font-family: 'Barlow Condensed', sans-serif;
+      font-family: 'Brice', sans-serif;
       font-size: clamp(100px, 16vw, 160px); font-weight: 900;
       color: var(--orange); line-height: 1;
       display: block; position: relative;
@@ -310,7 +317,7 @@
       50%      { text-shadow: 0 0 100px rgba(255,92,26,.7), 0 0 40px rgba(255,92,26,.5); }
     }
     .zero-label {
-      font-family: 'Barlow Condensed', sans-serif;
+      font-family: 'Brice', sans-serif;
       font-size: clamp(22px, 4vw, 36px); font-weight: 800;
       margin-top: 8px; position: relative;
     }
@@ -411,9 +418,9 @@
       position:relative; z-index:1;
     }
     .points-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:14px; }
-    .points-header .logo-sm { font-family:'Barlow Condensed',sans-serif; font-size:16px; font-weight:900; color:var(--orange); }
+    .points-header .logo-sm { font-family:'Brice',sans-serif; font-size:16px; font-weight:900; color:var(--orange); }
     .points-level { font-size:10px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:#FFD700; background:rgba(255,215,0,.1); padding:3px 8px; border-radius:4px; }
-    .points-num { font-family:'Barlow Condensed',sans-serif; font-size:44px; font-weight:900; }
+    .points-num { font-family:'Brice',sans-serif; font-size:44px; font-weight:900; }
     .points-sub { font-size:12px; color:var(--muted); margin-top:2px; }
     .progress-bar { background:var(--border); border-radius:99px; height:6px; margin-top:14px; }
     .progress-fill {
@@ -428,7 +435,7 @@
     .dash-card { flex:1; background:var(--bg3); border:1px solid var(--border); border-radius:8px; padding:14px; transition:border-color .25s; }
     .dash-card:hover { border-color:rgba(255,92,26,.3); }
     .dash-card-label { font-size:11px; color:var(--muted); margin-bottom:6px; }
-    .dash-card-val { font-family:'Barlow Condensed',sans-serif; font-size:26px; font-weight:900; }
+    .dash-card-val { font-family:'Brice',sans-serif; font-size:26px; font-weight:900; }
     .dash-card-val.up { color:var(--green); }
     .dash-card-val.orange { color:var(--orange); }
 
@@ -457,7 +464,7 @@
     .result-card:hover::before { opacity:1; }
     .result-card:hover { background:rgba(255,92,26,.03); }
     .result-num {
-      font-family:'Barlow Condensed',sans-serif;
+      font-family:'Brice',sans-serif;
       font-size:clamp(60px,8vw,88px); font-weight:900;
       color:var(--orange); line-height:1; display:block;
       transition:transform .3s;
@@ -498,7 +505,7 @@
       width:48px; height:48px; border-radius:50%; flex-shrink:0;
       background:var(--bg2); border:2px solid var(--orange);
       display:flex; align-items:center; justify-content:center;
-      font-family:'Barlow Condensed',sans-serif;
+      font-family:'Brice',sans-serif;
       font-size:18px; font-weight:900; color:var(--orange); z-index:1;
       transition:background .3s, transform .3s;
     }
@@ -555,7 +562,7 @@
     /* ───── FOOTER ───── */
     footer { border-top:1px solid var(--border); padding:40px 0; }
     .footer-inner { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:16px; }
-    .footer-logo { font-family:'Barlow Condensed',sans-serif; font-size:22px; font-weight:900; color:var(--text); text-decoration:none; }
+    .footer-logo { font-family:'Brice',sans-serif; font-size:22px; font-weight:900; color:var(--text); text-decoration:none; }
     .footer-logo span { color:var(--orange); }
     .footer-copy { font-size:13px; color:var(--muted2); }
     .footer-links { display:flex; gap:24px; }
@@ -569,7 +576,7 @@
       animation:marquee 18s linear infinite;
     }
     @keyframes marquee { from { transform:translateX(0); } to { transform:translateX(-50%); } }
-    .marquee-item { font-family:'Barlow Condensed',sans-serif; font-size:14px; font-weight:800; letter-spacing:.12em; text-transform:uppercase; color:var(--muted2); white-space:nowrap; }
+    .marquee-item { font-family:'Brice',sans-serif; font-size:14px; font-weight:800; letter-spacing:.12em; text-transform:uppercase; color:var(--muted2); white-space:nowrap; }
     .marquee-item span { color:var(--orange); margin-right:48px; }
   </style>
 </head>
