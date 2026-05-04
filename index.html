@@ -121,14 +121,6 @@
     .btn svg { flex-shrink: 0; transition: transform .2s; }
     .btn:hover svg { transform: translateX(4px); }
 
-    /* ───── SCROLL PROGRESS ───── */
-    .scroll-line {
-      position: fixed; top: 0; left: 0; height: 2px;
-      background: linear-gradient(90deg, var(--orange), #FF3B00);
-      z-index: 200; width: 0%;
-      transition: width .1s linear;
-    }
-
     /* ───── NAV ───── */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
@@ -580,8 +572,6 @@
 </head>
 <body>
 
-  <div class="scroll-line" id="scrollLine"></div>
-
   <!-- ─── NAV ─── -->
   <nav id="nav">
     <div class="nav-inner">
@@ -793,8 +783,9 @@
             <li><span class="check"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Opera sin intervención del staff. Tu cajero 24/7</li>
             <li><span class="check"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Conversión probada entre 8% y 15% en campañas de reactivación</li>
           </ul>
+          <p style="font-size:13px;color:var(--muted);margin-top:4px">Tenemos agentes especializados para cada etapa del negocio: atención, reservas, reactivación de clientes y más. Cada agente se entrena con los datos de tu restaurante.</p>
           <div style="display:flex;gap:12px;flex-wrap:wrap">
-            <a href="#" class="btn btn-primary">Quiero mi demo →</a>
+            <a href="tus-agentes.html" class="btn btn-primary">Conocé todos los agentes →</a>
             <a href="https://wa.me/+549XXXXXXXXX" class="btn btn-secondary">Agendar llamada</a>
           </div>
         </div>
@@ -1145,14 +1136,9 @@
   </footer>
 
   <script>
-    /* ── SCROLL PROGRESS ── */
-    const scrollLine = document.getElementById('scrollLine');
     const nav = document.getElementById('nav');
     window.addEventListener('scroll', () => {
-      const st = window.scrollY;
-      const dh = document.body.scrollHeight - window.innerHeight;
-      scrollLine.style.width = (st / dh * 100) + '%';
-      nav.classList.toggle('scrolled', st > 10);
+      nav.classList.toggle('scrolled', window.scrollY > 10);
     }, { passive: true });
 
     /* ── FADE-UP ON SCROLL ── */
