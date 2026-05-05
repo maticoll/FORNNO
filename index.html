@@ -571,7 +571,7 @@
   </style>
   <!-- ─── INTRO STYLES ─── -->
   <style>
-    /* ── Overlay container ── */
+    /* ── Video overlay ── */
     #intro-overlay {
       position: fixed;
       inset: 0;
@@ -579,6 +579,11 @@
       background: #000;
       cursor: pointer;
       overflow: hidden;
+      transition: opacity 0.4s ease;
+    }
+    #intro-overlay.exiting {
+      opacity: 0;
+      pointer-events: none;
     }
 
     #intro-video {
@@ -588,7 +593,6 @@
       display: block;
     }
 
-    /* Flash naranja que imita la luz del horno */
     #intro-flash {
       position: absolute;
       inset: 0;
@@ -602,7 +606,6 @@
       transition: opacity 0.12s ease;
     }
 
-    /* Hint "click para saltar" */
     #skip-hint {
       position: absolute;
       bottom: 32px;
@@ -622,31 +625,51 @@
       100% { opacity: 0.35; }
     }
 
-    /* Salida del overlay: zoom hacia adentro + fade */
-    #intro-overlay.exiting {
-      animation: overlay-exit 0.85s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+    /* ── Screenshot zoom overlay ── */
+    #zoom-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 9998;
+      background: #0d0d0d;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.45s ease;
+      cursor: pointer;
+    }
+    #zoom-overlay.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    #zoom-overlay.fading {
+      opacity: 0;
       pointer-events: none;
     }
-    @keyframes overlay-exit {
-      0%   { opacity: 1; transform: scale(1); }
-      18%  { opacity: 1; transform: scale(1.05); }
-      100% { opacity: 0; transform: scale(1.12); }
+
+    /* La imagen arranca chiquita en el centro y hace zoom —
+       transform-origin: center funciona perfecto en position:fixed
+       porque el elemento cubre exactamente el viewport */
+    #zoom-img {
+      width: 100vw;
+      height: 100vh;
+      object-fit: cover;
+      display: block;
+      transform: scale(0.07);
+      transform-origin: center center;
+      transition: transform 2.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    #zoom-img.zooming {
+      transform: scale(0.99);
     }
 
-    /* Wrapper del contenido real — arranca invisible y ligeramente zoomado */
+    /* ── Contenido real: solo fade, sin transform ── */
     #main-wrapper {
       opacity: 0;
-      transform: scale(1.06);
-      transition:
-        opacity  0.9s ease 0.1s,
-        transform 1.1s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.1s;
+      transition: opacity 0.6s ease;
     }
     #main-wrapper.revealed {
       opacity: 1;
-      transform: scale(1);
     }
 
-    /* Bloquear scroll mientras el intro corre */
     body.intro-active { overflow: hidden; }
   </style>
 </head>
@@ -657,6 +680,11 @@
     <video id="intro-video" src="intro.mp4" autoplay muted playsinline preload="auto"></video>
     <div id="intro-flash"></div>
     <span id="skip-hint">click para saltar</span>
+  </div>
+
+  <!-- ─── SCREENSHOT ZOOM ─── -->
+  <div id="zoom-overlay">
+    <img id="zoom-img" src="home-preview.png" alt="">
   </div>
 
   <!-- ─── CONTENIDO PRINCIPAL ─── -->
@@ -1326,50 +1354,88 @@
   <!-- ─── INTRO SCRIPT ─── -->
   <script>
     (function () {
-      var overlay     = document.getElementById('intro-overlay');
-      var video       = document.getElementById('intro-video');
-      var flash       = document.getElementById('intro-flash');
-      var wrapper     = document.getElementById('main-wrapper');
-      var done        = false;
+      var introOverlay = document.getElementById('intro-overlay');
+      var video        = document.getElementById('intro-video');
+      var flash        = document.getElementById('intro-flash');
+      var zoomOverlay  = document.getElementById('zoom-overlay');
+      var zoomImg      = document.getElementById('zoom-img');
+      var wrapper      = document.getElementById('main-wrapper');
+      var phase        = 0; // 0=video corriendo, 1=zoom corriendo, 2=terminado
 
-      // Bloquear scroll mientras corre el intro
       document.body.classList.add('intro-active');
 
-      function reveal() {
-        if (done) return;
-        done = true;
+      // ── FASE 1: video termina → arranca zoom del screenshot ──
+      function startZoom() {
+        if (phase !== 0) return;
+        phase = 1;
 
-        // Flash de fuego breve
+        // Flash de fuego
         flash.style.opacity = '1';
         setTimeout(function () { flash.style.opacity = '0'; }, 180);
 
-        // Salida del overlay con zoom
-        overlay.classList.add('exiting');
-        document.body.classList.remove('intro-active');
-
-        // Página emerge con zoom-in
-        wrapper.classList.add('revealed');
-
-        // Eliminar overlay del DOM al terminar
+        // Fade out video
+        introOverlay.classList.add('exiting');
         setTimeout(function () {
-          if (overlay.parentNode) overlay.parentNode.removeChild(overlay);
-        }, 950);
+          if (introOverlay.parentNode) introOverlay.parentNode.removeChild(introOverlay);
+        }, 450);
+
+        // Mostrar zoom overlay
+        zoomOverlay.classList.add('active');
+
+        // Disparar zoom en el siguiente frame para que CSS transition lo tome
+        requestAnimationFrame(function () {
+          requestAnimationFrame(function () {
+            zoomImg.classList.add('zooming');
+          });
+        });
+
+        // Tras 2.3s de zoom → revelar home real
+        setTimeout(revealHome, 2350);
       }
 
-      // Trigger automático al segundo 5.3
+      // ── FASE 2: zoom termina → fade a la home real ──
+      function revealHome() {
+        if (phase !== 1) return;
+        phase = 2;
+
+        zoomOverlay.classList.add('fading');
+        document.body.classList.remove('intro-active');
+        wrapper.classList.add('revealed');
+
+        setTimeout(function () {
+          if (zoomOverlay.parentNode) zoomOverlay.parentNode.removeChild(zoomOverlay);
+        }, 500);
+      }
+
+      // ── Skip: click durante video → ir directo a home ──
+      function skipAll() {
+        if (phase === 2) return;
+        phase = 2;
+        introOverlay.classList.add('exiting');
+        zoomOverlay.style.display = 'none';
+        document.body.classList.remove('intro-active');
+        wrapper.classList.add('revealed');
+        setTimeout(function () {
+          if (introOverlay.parentNode) introOverlay.parentNode.removeChild(introOverlay);
+        }, 450);
+      }
+
+      // Trigger automático al segundo 4
       video.addEventListener('timeupdate', function () {
-        if (video.currentTime >= 5.3) reveal();
+        if (video.currentTime >= 4.0) startZoom();
       });
 
-      // Por si el video termina antes
-      video.addEventListener('ended', reveal);
+      video.addEventListener('ended', startZoom);
 
-      // Click en cualquier lugar salta el intro
-      overlay.addEventListener('click', reveal);
+      // Click en video → skip directo a home
+      introOverlay.addEventListener('click', skipAll);
 
-      // Si el video no carga (móvil sin autoplay, etc.) revelar igual
+      // Click durante zoom → ir ya a home
+      zoomOverlay.addEventListener('click', revealHome);
+
+      // Fallback si el video no carga
       video.addEventListener('error', function () {
-        setTimeout(reveal, 400);
+        setTimeout(startZoom, 400);
       });
     })();
   </script>
