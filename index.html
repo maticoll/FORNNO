@@ -569,8 +569,98 @@
     .marquee-item { font-family:'Brice',sans-serif; font-size:14px; font-weight:800; letter-spacing:.12em; text-transform:uppercase; color:var(--muted2); white-space:nowrap; }
     .marquee-item span { color:var(--orange); margin-right:48px; }
   </style>
+  <!-- ─── INTRO STYLES ─── -->
+  <style>
+    /* ── Overlay container ── */
+    #intro-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background: #000;
+      cursor: pointer;
+      overflow: hidden;
+    }
+
+    #intro-video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* Flash naranja que imita la luz del horno */
+    #intro-flash {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at center,
+        rgba(255, 160, 60, 0.95) 0%,
+        rgba(255, 92, 26, 0.75) 35%,
+        rgba(0, 0, 0, 0) 70%
+      );
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.12s ease;
+    }
+
+    /* Hint "click para saltar" */
+    #skip-hint {
+      position: absolute;
+      bottom: 32px;
+      right: 36px;
+      color: rgba(255, 255, 255, 0.45);
+      font-size: 11px;
+      font-family: 'Montserrat', sans-serif;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      opacity: 0;
+      animation: hint-appear 4s ease 1.8s forwards;
+    }
+    @keyframes hint-appear {
+      0%   { opacity: 0; }
+      25%  { opacity: 0.7; }
+      75%  { opacity: 0.7; }
+      100% { opacity: 0.35; }
+    }
+
+    /* Salida del overlay: zoom hacia adentro + fade */
+    #intro-overlay.exiting {
+      animation: overlay-exit 0.85s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+      pointer-events: none;
+    }
+    @keyframes overlay-exit {
+      0%   { opacity: 1; transform: scale(1); }
+      18%  { opacity: 1; transform: scale(1.05); }
+      100% { opacity: 0; transform: scale(1.12); }
+    }
+
+    /* Wrapper del contenido real — arranca invisible y ligeramente zoomado */
+    #main-wrapper {
+      opacity: 0;
+      transform: scale(1.06);
+      transition:
+        opacity  0.9s ease 0.1s,
+        transform 1.1s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.1s;
+    }
+    #main-wrapper.revealed {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    /* Bloquear scroll mientras el intro corre */
+    body.intro-active { overflow: hidden; }
+  </style>
 </head>
 <body>
+
+  <!-- ─── INTRO VIDEO ─── -->
+  <div id="intro-overlay">
+    <video id="intro-video" src="intro.mp4" autoplay muted playsinline preload="auto"></video>
+    <div id="intro-flash"></div>
+    <span id="skip-hint">click para saltar</span>
+  </div>
+
+  <!-- ─── CONTENIDO PRINCIPAL ─── -->
+  <div id="main-wrapper">
 
   <!-- ─── NAV ─── -->
   <nav id="nav">
@@ -1230,5 +1320,59 @@
       });
     });
   </script>
+
+  </div><!-- /main-wrapper -->
+
+  <!-- ─── INTRO SCRIPT ─── -->
+  <script>
+    (function () {
+      var overlay     = document.getElementById('intro-overlay');
+      var video       = document.getElementById('intro-video');
+      var flash       = document.getElementById('intro-flash');
+      var wrapper     = document.getElementById('main-wrapper');
+      var done        = false;
+
+      // Bloquear scroll mientras corre el intro
+      document.body.classList.add('intro-active');
+
+      function reveal() {
+        if (done) return;
+        done = true;
+
+        // Flash de fuego breve
+        flash.style.opacity = '1';
+        setTimeout(function () { flash.style.opacity = '0'; }, 180);
+
+        // Salida del overlay con zoom
+        overlay.classList.add('exiting');
+        document.body.classList.remove('intro-active');
+
+        // Página emerge con zoom-in
+        wrapper.classList.add('revealed');
+
+        // Eliminar overlay del DOM al terminar
+        setTimeout(function () {
+          if (overlay.parentNode) overlay.parentNode.removeChild(overlay);
+        }, 950);
+      }
+
+      // Trigger automático al segundo 5.3
+      video.addEventListener('timeupdate', function () {
+        if (video.currentTime >= 5.3) reveal();
+      });
+
+      // Por si el video termina antes
+      video.addEventListener('ended', reveal);
+
+      // Click en cualquier lugar salta el intro
+      overlay.addEventListener('click', reveal);
+
+      // Si el video no carga (móvil sin autoplay, etc.) revelar igual
+      video.addEventListener('error', function () {
+        setTimeout(reveal, 400);
+      });
+    })();
+  </script>
+
 </body>
 </html>
