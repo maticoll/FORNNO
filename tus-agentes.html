@@ -19,17 +19,17 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --orange: #FF5C1A;
-      --orange-dark: #E04A10;
-      --orange-glow: rgba(255, 92, 26, 0.18);
-      --bg: #0d0d0d;
-      --bg2: #141414;
-      --bg3: #1a1a1a;
-      --border: #242424;
-      --text: #ffffff;
-      --muted: #888888;
-      --muted2: #555555;
-      --green: #22c55e;
+      --orange: #D94F1A;
+      --orange-dark: #B83D10;
+      --orange-glow: rgba(217, 79, 26, 0.14);
+      --bg: #F5F0E8;
+      --bg2: #EDE8DE;
+      --bg3: #E5DFD3;
+      --border: #D4CCC0;
+      --text: #1A1612;
+      --muted: #7A6F62;
+      --muted2: #A89E94;
+      --green: #2a7a4b;
       --radius: 12px;
     }
 
@@ -105,12 +105,12 @@
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
       padding: 16px 0;
-      background: rgba(13,13,13,.8);
+      background: rgba(245,240,232,.8);
       backdrop-filter: blur(20px);
       border-bottom: 1px solid transparent;
       transition: border-color .3s, background .3s;
     }
-    nav.scrolled { border-color: var(--border); background: rgba(13,13,13,.95); }
+    nav.scrolled { border-color: var(--border); background: rgba(245,240,232,.95); }
     .nav-inner {
       display: flex; align-items: center; justify-content: space-between;
       max-width: 1140px; margin: 0 auto; padding: 0 24px;
@@ -513,7 +513,7 @@
 
     /* ───── FINAL CTA ───── */
     .final-cta {
-      background: linear-gradient(160deg,#181111,#0d0d0d);
+      background: linear-gradient(160deg,#EDE0D0,var(--bg));
       border-top: 1px solid var(--border);
       padding: 110px 0; text-align: center;
       position: relative; overflow: hidden;
@@ -521,7 +521,7 @@
     .final-cta::before {
       content: ''; position: absolute; top: -200px; left: 50%; transform: translateX(-50%);
       width: 900px; height: 700px;
-      background: radial-gradient(ellipse, rgba(255,92,26,.11) 0%, transparent 65%);
+      background: radial-gradient(ellipse, rgba(217,79,26,.12) 0%, transparent 65%);
       pointer-events: none;
     }
     .final-cta h2 { font-size: clamp(36px,5.5vw,76px); font-weight:900; max-width:780px; margin:0 auto 18px; line-height:.97; position:relative; }
