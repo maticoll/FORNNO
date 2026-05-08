@@ -376,14 +376,59 @@
     .footer-links a:hover { color:var(--text); }
 
     /* ───── RESPONSIVE ───── */
+
+    /* Tablet (≤900px) */
     @media (max-width:900px) {
+      /* Formats */
       .formats-layout { grid-template-columns:1fr; min-height:auto; }
-      .formats-text-col { justify-content:flex-start; padding:60px 24px; }
-      .formats-image { min-height:420px; order:1; }
-      .features-strip-grid { grid-template-columns:repeat(2,1fr); }
+      .formats-text-col { justify-content:flex-start; padding:60px 24px 48px; }
+      .formats-text { max-width:100%; }
+      .formats-image { min-height:400px; order:1; }
+
+      /* Features */
+      .features-strip-grid { grid-template-columns:repeat(2,1fr); gap:24px; }
+      .features-strip { padding:60px 0; }
+
+      /* CTA */
+      .cta-section { padding:70px 0; }
     }
+
+    /* Mobile (≤768px) */
+    @media (max-width:768px) {
+      /* Nav logo */
+      .nav-logo img { height:54px !important; }
+
+      /* Hero */
+      .hero { padding:100px 0 60px; }
+      .hero-actions { flex-direction:column; align-items:stretch; }
+      .hero-actions .btn { justify-content:center; }
+      .btn-lg { font-size:15px; padding:15px 24px; }
+    }
+
+    /* Mobile (≤600px) */
     @media (max-width:600px) {
-      .features-strip-grid { grid-template-columns:1fr; }
+      /* Hero */
+      .hero { padding:90px 0 48px; }
+
+      /* Formats */
+      .formats-text-col { padding:48px 20px 40px; }
+      .formats-image { min-height:300px; }
+      .formats-text h2 { font-size:clamp(32px,9vw,48px); }
+      .formats-text p { font-size:15px; }
+      .formats-text .btn { width:100%; justify-content:center; }
+
+      /* Features */
+      .features-strip-grid { grid-template-columns:1fr; gap:32px; }
+      .features-strip { padding:48px 0; }
+
+      /* CTA */
+      .cta-section { padding:56px 0; }
+      .cta-actions { flex-direction:column; align-items:stretch; }
+      .cta-actions .btn { justify-content:center; }
+
+      /* Footer */
+      .footer-inner { flex-direction:column; align-items:center; text-align:center; }
+      .footer-links { flex-wrap:wrap; justify-content:center; gap:16px; }
     }
   </style>
 </head>
