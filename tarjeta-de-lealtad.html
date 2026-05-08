@@ -211,24 +211,17 @@
     .formats-intro h2 { font-size:clamp(34px,4.5vw,56px); font-weight:900; }
     .formats-intro p { font-size:17px; color:var(--muted); margin-top:14px; line-height:1.7; }
 
-    .formats-grid {
+    .formats-layout {
       display:grid;
       grid-template-columns:1fr 1fr;
-      gap:48px;
+      gap:72px;
       align-items:center;
     }
-    .formats-mockup-col {
-      display:flex;
-      justify-content:center;
-      align-items:center;
-    }
-    .formats-mockup-col img {
-      width:100%;
-      max-width:520px;
-      height:auto;
-      display:block;
-      border-radius:16px;
-    }
+    .formats-text { display:flex; flex-direction:column; gap:20px; }
+    .formats-text h2 { font-size:clamp(36px,4.5vw,58px); font-weight:900; line-height:1.02; }
+    .formats-text p { font-size:17px; color:var(--muted); line-height:1.75; max-width:480px; }
+    .formats-image { display:flex; justify-content:center; align-items:center; }
+    .formats-image img { width:100%; max-width:540px; height:auto; display:block; }
 
     .format-card {
       background:var(--bg2); border:1px solid var(--border);
@@ -378,12 +371,12 @@
 
     /* ───── RESPONSIVE ───── */
     @media (max-width:900px) {
-      .formats-grid { grid-template-columns:1fr; gap:32px; }
+      .formats-layout { grid-template-columns:1fr; gap:40px; }
+      .formats-image { order:-1; }
       .features-strip-grid { grid-template-columns:repeat(2,1fr); }
     }
     @media (max-width:600px) {
       .features-strip-grid { grid-template-columns:1fr; }
-      .apple-wallet-card { width:100%; max-width:320px; }
     }
   </style>
 </head>
@@ -449,82 +442,25 @@
   <!-- ─── FORMATS ─── -->
   <section class="formats-section">
     <div class="container">
-      <div class="formats-intro fade-up">
-        <span class="eyebrow">Apple Wallet · Experiencia premium</span>
-        <h2>La tarjeta en el<br>bolsillo de tu cliente.</h2>
-        <p>Un toque y vive en el Wallet del iPhone para siempre. Se actualiza sola cuando suben los puntos. Como un boarding pass, pero de tu restaurante.</p>
-      </div>
+      <div class="formats-layout">
 
-      <div class="formats-grid">
-
-        <!-- ─── MOCKUP IMAGE ─── -->
-        <div class="formats-mockup-col fade-up">
-          <img src="iPhone 15 Set Mockup.png" alt="Tarjeta de lealtad en iPhone">
+        <!-- ─── TEXTO IZQUIERDA ─── -->
+        <div class="formats-text fade-up">
+          <span class="eyebrow">Apple Wallet · Experiencia premium</span>
+          <h2>La tarjeta en el<br>bolsillo de tu cliente.</h2>
+          <p>Un toque y la tarjeta vive en el Wallet del iPhone para siempre. Se actualiza sola cuando suben los puntos. Como un boarding pass, pero de tu restaurante.</p>
+          <a href="https://wa.me/+549XXXXXXXXX" class="btn btn-primary" style="align-self:flex-start">
+            Quiero mi tarjeta
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
         </div>
 
-        <!-- ─── APPLE WALLET ─── -->
-        <div class="format-card fade-up" style="transition-delay:.1s">
-          <div class="format-label">
-            <div class="format-icon" style="background:rgba(0,0,0,.06);border-color:var(--border)">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 814 1000" fill="#1A1612"><path d="M788.1 340.9c-5.8 4.5-108.2 62.2-108.2 190.5 0 148.4 130.3 200.9 134.2 202.2-.6 3.2-20.7 71.9-68.7 141.9-42.8 61.6-87.5 123.1-155.5 123.1s-85.5-39.5-164-39.5c-76 0-103.7 40.8-165.9 40.8s-105-42.3-150.3-109.2C23 413.8 9.6 229.6 43.7 130.2c24.9-67.1 85.3-105.3 149.6-105.3 61.3 0 101.1 40.8 150.3 40.8 47.4 0 96.5-42.7 163.4-42.7 62.2 0 127.1 36.9 152.7 99.2zm-205.6-1.2C571.2 66.8 647.5 26.7 665.5 10.7c-8.3-4.1-30.7-12.7-57.5-12.7-62.1 0-117.1 40.5-151.2 40.5-37.4 0-72.2-40.5-142.9-40.5-57.8 0-112.4 30.4-144.5 85.2-37.7 64-40.6 181.3 4.7 306.1 30.5 83.4 116.7 185.2 173.1 185.2 52.1 0 71.8-35.7 150.4-35.7 77.2 0 93.5 35.7 149.1 35.7 58.3 0 146.6-108 172.5-189.2-76.7-37.2-122.6-127.3-122.6-209.7z"/></svg>
-            </div>
-            <div class="format-name">Apple Wallet</div>
-          </div>
-          <p class="format-desc">Un toque y la tarjeta vive en el Wallet del iPhone para siempre. Se actualiza sola cuando suben los puntos. Como un boarding pass, pero de tu restaurante.</p>
-          <div class="format-visual">
-            <div class="apple-wallet-card">
-              <div class="awc-header">
-                <div>
-                  <div class="awc-brand">Tu Restaurante</div>
-                  <div class="awc-brand-sub">Programa de Lealtad</div>
-                </div>
-                <div style="text-align:right">
-                  <div class="awc-wallet-label">Wallet</div>
-                  <div style="display:flex;gap:3px;justify-content:flex-end">
-                    <div style="width:14px;height:14px;border-radius:50%;background:rgba(255,255,255,.15)"></div>
-                    <div style="width:14px;height:14px;border-radius:50%;background:rgba(255,255,255,.35)"></div>
-                  </div>
-                </div>
-              </div>
-              <div class="awc-body">
-                <div class="awc-pts-label">Puntos acumulados</div>
-                <div class="awc-pts">2.840</div>
-                <div class="awc-pts-sub">Canjeás desde 500 pts</div>
-                <div class="awc-divider"></div>
-                <div class="awc-name-label">Titular</div>
-                <div class="awc-name">Tu Nombre</div>
-                <div class="awc-qr-row">
-                  <div class="awc-qr-wrap">
-                    <svg viewBox="0 0 41 41" xmlns="http://www.w3.org/2000/svg" style="width:96px;height:96px">
-                      <rect x="2" y="2" width="11" height="11" fill="#111" rx="1"/><rect x="3" y="3" width="9" height="9" fill="#fff" rx=".5"/><rect x="4" y="4" width="7" height="7" fill="#111" rx=".5"/>
-                      <rect x="28" y="2" width="11" height="11" fill="#111" rx="1"/><rect x="29" y="3" width="9" height="9" fill="#fff" rx=".5"/><rect x="30" y="4" width="7" height="7" fill="#111" rx=".5"/>
-                      <rect x="2" y="28" width="11" height="11" fill="#111" rx="1"/><rect x="3" y="29" width="9" height="9" fill="#fff" rx=".5"/><rect x="4" y="30" width="7" height="7" fill="#111" rx=".5"/>
-                      <rect x="14" y="6" width="1" height="1" fill="#111"/><rect x="16" y="6" width="1" height="1" fill="#111"/><rect x="18" y="6" width="1" height="1" fill="#111"/><rect x="20" y="6" width="1" height="1" fill="#111"/><rect x="22" y="6" width="1" height="1" fill="#111"/>
-                      <rect x="6" y="14" width="1" height="1" fill="#111"/><rect x="6" y="16" width="1" height="1" fill="#111"/><rect x="6" y="18" width="1" height="1" fill="#111"/><rect x="6" y="20" width="1" height="1" fill="#111"/><rect x="6" y="22" width="1" height="1" fill="#111"/>
-                      <rect x="14" y="14" width="2" height="2" fill="#D94F1A" rx=".3"/><rect x="17" y="14" width="1" height="1" fill="#111"/><rect x="19" y="14" width="2" height="2" fill="#111"/><rect x="22" y="14" width="1" height="1" fill="#111"/><rect x="24" y="15" width="2" height="1" fill="#111"/>
-                      <rect x="14" y="17" width="1" height="2" fill="#111"/><rect x="16" y="17" width="2" height="1" fill="#111"/><rect x="20" y="17" width="1" height="2" fill="#111"/><rect x="23" y="17" width="3" height="1" fill="#111"/>
-                      <rect x="15" y="20" width="2" height="1" fill="#111"/><rect x="18" y="20" width="1" height="2" fill="#111"/><rect x="21" y="20" width="2" height="1" fill="#111"/><rect x="24" y="20" width="1" height="2" fill="#111"/>
-                      <rect x="14" y="23" width="3" height="1" fill="#111"/><rect x="18" y="23" width="2" height="2" fill="#D94F1A" rx=".3"/><rect x="22" y="23" width="1" height="1" fill="#111"/><rect x="25" y="24" width="1" height="2" fill="#111"/>
-                      <rect x="28" y="14" width="2" height="1" fill="#111"/><rect x="31" y="14" width="2" height="2" fill="#111"/><rect x="34" y="14" width="1" height="1" fill="#111"/>
-                      <rect x="28" y="17" width="1" height="2" fill="#111"/><rect x="30" y="17" width="3" height="1" fill="#111"/><rect x="34" y="17" width="2" height="1" fill="#111"/>
-                      <rect x="29" y="20" width="2" height="2" fill="#111"/><rect x="32" y="20" width="1" height="1" fill="#111"/><rect x="34" y="21" width="2" height="1" fill="#111"/>
-                      <rect x="14" y="28" width="2" height="2" fill="#111"/><rect x="17" y="28" width="1" height="1" fill="#111"/><rect x="19" y="29" width="2" height="1" fill="#111"/><rect x="22" y="28" width="3" height="1" fill="#111"/>
-                      <rect x="14" y="31" width="1" height="2" fill="#111"/><rect x="16" y="31" width="2" height="1" fill="#111"/><rect x="20" y="31" width="1" height="2" fill="#111"/><rect x="23" y="32" width="2" height="1" fill="#111"/>
-                      <rect x="14" y="34" width="3" height="1" fill="#111"/><rect x="18" y="34" width="1" height="2" fill="#D94F1A" rx=".3"/><rect x="21" y="35" width="2" height="1" fill="#111"/><rect x="24" y="34" width="1" height="2" fill="#111"/>
-                    </svg>
-                  </div>
-                </div>
-              </div>
-              <div class="awc-footer">
-                <div class="awc-footer-brand">TU RESTAURANTE · LEALTAD</div>
-                <div style="font-size:14px"> </div>
-              </div>
-            </div>
-          </div>
+        <!-- ─── IMAGEN DERECHA ─── -->
+        <div class="formats-image fade-up" style="transition-delay:.15s">
+          <img src="iPhone%2015%20Set%20Mockup.png" alt="Tarjeta de lealtad en iPhone 15">
         </div>
 
-
-      </div><!-- /formats-grid -->
+      </div><!-- /formats-layout -->
     </div>
   </section>
 
