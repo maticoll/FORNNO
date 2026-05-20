@@ -573,7 +573,7 @@
       </div>
       <div class="nav-cta">
         <a href="index.html" class="btn btn-secondary" style="padding:11px 20px;font-size:14px">Volver al inicio</a>
-        <a href="https://wa.me/+549XXXXXXXXX" class="btn btn-primary" style="padding:11px 22px;font-size:14px">Agendar llamada →</a>
+        <a href="https://wa.me/+549XXXXXXXXX" class="btn btn-primary" style="padding:11px 22px;font-size:14px">Quiero mi demo →</a>
       </div>
     </div>
   </nav>
@@ -649,7 +649,7 @@
                 Quiero este agente
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
               </a>
-              <a href="https://wa.me/+549XXXXXXXXX" class="btn btn-secondary">Agendar demo</a>
+              <a href="https://wa.me/+549XXXXXXXXX" class="btn btn-secondary">Quiero mi demo →</a>
             </div>
           </div>
 
@@ -700,7 +700,7 @@
                 Quiero este agente
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
               </a>
-              <a href="https://wa.me/+549XXXXXXXXX" class="btn btn-secondary">Agendar demo</a>
+              <a href="https://wa.me/+549XXXXXXXXX" class="btn btn-secondary">Quiero mi demo →</a>
             </div>
           </div>
 
@@ -751,7 +751,7 @@
                 Quiero este agente
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
               </a>
-              <a href="https://wa.me/+549XXXXXXXXX" class="btn btn-secondary">Agendar demo</a>
+              <a href="https://wa.me/+549XXXXXXXXX" class="btn btn-secondary">Quiero mi demo →</a>
             </div>
           </div>
 
@@ -830,11 +830,10 @@
         Implementación en menos de 4 semanas. Sin contratos anuales. Sin comisiones ocultas. Si no genera resultados, no te cobramos.
       </p>
       <div class="final-cta-actions fade-up" style="transition-delay:.2s">
-        <a href="#" class="btn btn-primary" style="font-size:16px;padding:17px 34px">
+        <a href="https://wa.me/+549XXXXXXXXX" class="btn btn-primary" style="font-size:16px;padding:17px 34px">
           Quiero mi demo
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </a>
-        <a href="https://wa.me/+549XXXXXXXXX" class="btn btn-secondary" style="font-size:16px;padding:17px 34px">💬 Agendar llamada</a>
       </div>
       <p class="final-cta-note fade-up" style="transition-delay:.3s">
         Sin contratos anuales · Sin comisiones ocultas · Si no funciona, no te cobramos
@@ -1062,17 +1061,12 @@
     /* ── WHATSAPP REDIRECTS ── */
     (function () {
       var DEMO = 'https://wa.me/59899796798?text=' + encodeURIComponent('¡Hola! Quiero solicitar una demo de FORNNO para mi restaurante. Me interesa ver el sistema de fidelización, automatización y CRM en acción.');
-      var LLAMADA = 'https://wa.me/59899796798?text=' + encodeURIComponent('¡Hola! Me gustaría agendar una llamada para saber más sobre FORNNO y cómo puede ayudar a mi restaurante. ¿Cuándo tenés disponibilidad?');
       document.querySelectorAll('a, button').forEach(function (el) {
         var t = el.textContent.trim().toLowerCase();
         var isDemo = t.includes('quiero mi demo') || t.includes('solicitar demo') || t.includes('empezar hoy');
-        var isLlamada = t.includes('agendar') && (t.includes('llamada') || t.includes('demo'));
         if (isDemo) {
           if (el.tagName === 'A') { el.href = DEMO; el.target = '_blank'; el.rel = 'noopener'; }
           else { el.addEventListener('click', function (e) { e.preventDefault(); window.open(DEMO, '_blank', 'noopener'); }); }
-        } else if (isLlamada) {
-          if (el.tagName === 'A') { el.href = LLAMADA; el.target = '_blank'; el.rel = 'noopener'; }
-          else { el.addEventListener('click', function (e) { e.preventDefault(); window.open(LLAMADA, '_blank', 'noopener'); }); }
         }
       });
     })();
