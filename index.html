@@ -328,7 +328,7 @@
     .stat-item:last-child { border-right: none; }
     .stat-num {
       font-family: 'Brice', sans-serif;
-      font-size: 54px; font-weight: 900;
+      font-size: clamp(32px, 8vw, 54px); font-weight: 900;
       color: var(--orange); line-height: 1;
       display: block;
       transition: transform .3s;
@@ -336,10 +336,12 @@
     .stat-item:hover .stat-num { transform: scale(1.06); }
     .stat-label { font-size: 13px; color: var(--muted); margin-top: 6px; line-height: 1.4; }
     @media (max-width: 640px) {
+      .stats-bar { padding: 32px 0; }
       .stats-grid { grid-template-columns: repeat(2,1fr); }
-      .stat-item { border-right:none; border-bottom:1px solid var(--border); padding:24px; }
+      .stat-item { border-right:none; border-bottom:1px solid var(--border); padding:20px 16px; text-align:center; }
       .stat-item:nth-child(odd) { border-right:1px solid var(--border); }
-      .stat-item:last-child { border-bottom:none; }
+      .stat-item:nth-child(3):last-child, .stat-item:last-child { border-bottom:none; }
+      .stat-label { font-size: 12px; }
     }
 
     /* ───── PROBLEM ───── */
