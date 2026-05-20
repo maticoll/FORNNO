@@ -410,6 +410,7 @@
       font-size:24px; margin:0 auto 20px;
       transition:transform .3s, background .3s;
     }
+    .pillar-icon svg { display:block; flex-shrink:0; }
     .pillar:hover .pillar-icon { transform:scale(1.12) rotate(-4deg); background:rgba(255,92,26,.25); }
     .pillar h3 { font-size:20px; font-weight:800; margin-bottom:10px; }
     .pillar p { font-size:13px; color:var(--muted); line-height:1.6; }
@@ -975,22 +976,34 @@
       </div>
       <div class="pillars-grid">
         <div class="pillar tilt-card fade-up">
-          <div class="pillar-icon">🤖</div>
+          <!-- Rayo: respuesta instantánea, siempre activo -->
+          <div class="pillar-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" style="color:var(--orange)"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+          </div>
           <h3>Agentes IA 24/7</h3>
           <p>WhatsApp siempre activo. Reservas, consultas y pedidos sin intervención del staff.</p>
         </div>
         <div class="pillar tilt-card fade-up" style="transition-delay:.1s">
-          <div class="pillar-icon">🏆</div>
+          <!-- Diamante: valor acumulado, recompensa premium -->
+          <div class="pillar-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" style="color:var(--orange)"><path d="M6 3h12l4 6-10 13L2 9z"/><path d="M11 3L8 9l4 13 4-13-3-6"/><path d="M2 9h20"/></svg>
+          </div>
           <h3>Fidelización</h3>
           <p>Programa de puntos, niveles VIP, tarjeta digital y referidos automatizados.</p>
         </div>
         <div class="pillar tilt-card fade-up" style="transition-delay:.2s">
-          <div class="pillar-icon">📣</div>
+          <!-- Imán: atrae clientes, genera tráfico -->
+          <div class="pillar-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" style="color:var(--orange)"><path d="M6 15A6 6 0 1 0 6 3a6 6 0 0 0 0 12z" clip-path="url(#half)"/><path d="M18 15A6 6 0 1 0 18 3a6 6 0 0 0 0 12z"/><path d="M6 15v3a3 3 0 0 0 6 0v-3"/><path d="M18 15v3a3 3 0 0 1-6 0v-3"/><line x1="6" y1="3" x2="6" y2="9"/><line x1="18" y1="3" x2="18" y2="9"/></svg>
+          </div>
           <h3>Marketing Digital</h3>
           <p>Redes sociales, Ads geolocalizados, SEO local y contenido que convierte.</p>
         </div>
         <div class="pillar tilt-card fade-up" style="transition-delay:.3s">
-          <div class="pillar-icon">📊</div>
+          <!-- Llave: tu data bajo tu control -->
+          <div class="pillar-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" style="color:var(--orange)"><circle cx="7.5" cy="15.5" r="5.5"/><path d="M21 2l-9.6 9.6"/><path d="M15.5 7.5l3 3L22 7l-3-3"/></svg>
+          </div>
           <h3>CRM & Datos</h3>
           <p>Dashboard con métricas reales. Tu data, para siempre. Sin cederla a terceros.</p>
         </div>
