@@ -582,6 +582,46 @@
     .timeline-content h3 { font-size:22px; font-weight:800; margin-bottom:8px; }
     .timeline-content p { font-size:14px; color:var(--muted); line-height:1.65; }
 
+    /* ───── ALTERNATING TIMELINE ───── */
+    .alt-timeline { position:relative; }
+    .alt-timeline__line {
+      position:absolute; left:50%; top:0; bottom:0;
+      width:2px; background:linear-gradient(to bottom, var(--orange), var(--border));
+      transform:translateX(-50%); z-index:0;
+    }
+    .alt-timeline__row {
+      display:grid; grid-template-columns:1fr 56px 1fr;
+      gap:36px; align-items:start; padding:0 0 44px; position:relative;
+    }
+    .alt-timeline__dot {
+      width:56px; height:56px; border-radius:50%;
+      background:var(--bg2); border:2px solid var(--orange);
+      display:flex; align-items:center; justify-content:center;
+      font-family:'Brice',sans-serif; font-size:20px; font-weight:900;
+      color:var(--orange); z-index:1; justify-self:center;
+      transition:background .3s, transform .3s;
+    }
+    .alt-timeline__dot.fire { background:var(--orange); color:#fff; border-color:var(--orange); font-size:22px; }
+    .alt-timeline__row:hover .alt-timeline__dot:not(.fire) { background:rgba(217,79,26,.15); transform:scale(1.1); }
+    .alt-timeline__content {
+      background:var(--bg2); border:1px solid var(--border);
+      border-radius:var(--radius); padding:28px 32px;
+      transition:border-color .3s;
+    }
+    .alt-timeline__content.left { text-align:right; }
+    .alt-timeline__content.right { text-align:left; }
+    .alt-timeline__content.fire-card { background:rgba(217,79,26,.05); border-color:rgba(217,79,26,.25); }
+    .alt-timeline__row:hover .alt-timeline__content { border-color:rgba(217,79,26,.3); }
+    .alt-timeline__spacer {}
+    @media (max-width:768px) {
+      .alt-timeline__line { left:27px; transform:none; }
+      .alt-timeline__row { grid-template-columns:56px 1fr; gap:20px; }
+      .alt-timeline__spacer { display:none !important; }
+      .alt-timeline__dot { grid-column:1; grid-row:1; }
+      .alt-timeline__content.left,
+      .alt-timeline__content.right { grid-column:2; grid-row:1; text-align:left; }
+    }
+
     /* ───── TESTIMONIALS ───── */
     .testimonial-card {
       background:var(--bg2); border:1px solid var(--border);
@@ -926,12 +966,12 @@
   </section>
 
   <!-- ─── SYSTEM OVERVIEW ─── -->
-  <section class="section" id="sistema" style="border-top:1px solid var(--border)">
+  <section class="section" id="sistema" style="background:var(--bg2);border-top:1px solid var(--border)">
     <div class="container">
-      <div class="system-intro fade-up">
+      <div class="fade-up" style="margin-bottom:60px">
         <span class="eyebrow">El ecosistema FORNNO</span>
-        <h2>Cuatro pilares.<br>Un solo sistema.</h2>
-        <p>Marketing, fidelización, automatización y datos unidos por primera vez para la gastronomía.</p>
+        <h2 style="font-size:clamp(38px,5vw,60px);font-weight:900">Cuatro pilares.<br>Un solo sistema.</h2>
+        <p style="font-size:17px;color:var(--muted);margin-top:16px;max-width:560px;line-height:1.7">Marketing, fidelización, automatización y datos unidos por primera vez para la gastronomía.</p>
       </div>
       <div class="pillars-grid">
         <div class="pillar tilt-card fade-up">
@@ -981,6 +1021,17 @@
         </div>
         <div class="feature-visual tilt-card fade-up" style="transition-delay:.15s">
           <div class="feature-visual-glow"></div>
+          <!-- Bot header — estilo Stitch adaptado -->
+          <div style="display:flex;align-items:center;gap:12px;padding-bottom:14px;border-bottom:1px solid var(--border);margin-bottom:16px;position:relative;z-index:1">
+            <div style="width:40px;height:40px;background:var(--orange-glow);border:1px solid rgba(217,79,26,.3);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0">🤖</div>
+            <div>
+              <div style="font-weight:700;font-size:14px;color:var(--text)">Agente FORNNO</div>
+              <div style="font-size:11px;color:var(--green);display:flex;align-items:center;gap:5px">
+                <span style="width:6px;height:6px;background:var(--green);border-radius:50%;display:inline-block;animation:pulse-dot 2s ease-in-out infinite"></span>
+                Online · WhatsApp
+              </div>
+            </div>
+          </div>
           <div>
             <div class="chat-sender">🤖 Agente FORNNO</div>
             <div class="chat-bubble">¡Hola! ¿En qué te puedo ayudar? Podés consultarme el menú, reservar mesa o pedir delivery directamente acá 🍕</div>
@@ -992,9 +1043,9 @@
             <div class="chat-sender">🤖 Agente FORNNO</div>
             <div class="chat-bubble">¡Perfecto! Tengo disponibilidad el sábado 21:00 para 4 personas. ¿A nombre de quién reservo? 🙌</div>
           </div>
-          <div style="margin-top:8px;display:flex;gap:10px;align-items:center;justify-content:flex-end;position:relative;z-index:1">
-            <span class="visual-badge">✓ Reserva confirmada</span>
-            <span class="visual-badge" style="background:rgba(255,92,26,.1);border-color:rgba(255,92,26,.2);color:var(--orange)">0% comisión</span>
+          <div style="margin-top:10px;display:flex;align-items:center;justify-content:space-between;padding:10px 14px;background:rgba(42,122,75,.08);border:1px solid rgba(42,122,75,.2);border-radius:8px;position:relative;z-index:1">
+            <span style="font-size:12px;font-weight:700;color:var(--green)">✓ Reserva confirmada</span>
+            <span class="visual-badge" style="background:rgba(217,79,26,.1);border-color:rgba(217,79,26,.2);color:var(--orange)">0% comisión</span>
           </div>
         </div>
       </div>
@@ -1096,7 +1147,7 @@
   </section>
 
   <!-- ─── FEATURE 4: CRM & AUTOMATIZACIÓN ─── -->
-  <section class="feature">
+  <section class="feature" id="crm">
     <div class="container">
       <div class="feature-grid reverse">
         <div class="feature-content fade-up">
@@ -1111,8 +1162,8 @@
             <li><span class="check"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Tu data no se cede a ningún servicio terciario. Es tuya</li>
           </ul>
           <div style="display:flex;gap:12px;flex-wrap:wrap">
-            <a href="#" class="btn btn-primary">Quiero mi demo →</a>
-            <a href="https://wa.me/+549XXXXXXXXX" class="btn btn-secondary">Agendar llamada</a>
+            <a href="crm-y-automatizacion.html" class="btn btn-primary">Ver CRM y automatización →</a>
+            <a href="#" class="btn btn-secondary">Quiero mi demo</a>
           </div>
         </div>
         <div class="feature-visual tilt-card fade-up" style="transition-delay:.15s">
@@ -1227,54 +1278,70 @@
   </section>
 
   <!-- ─── TIMELINE ─── -->
-  <section class="section">
+  <section class="section" id="implementacion">
     <div class="container">
       <div class="timeline-intro fade-up">
         <span class="eyebrow">Implementación</span>
-        <h2>De cero a sistema<br>en 4 semanas.</h2>
+        <h2>De cero a sistema<br>en <em style="font-style:normal;color:var(--orange)">4 semanas.</em></h2>
         <p>Cada restaurante funciona distinto. Configuramos una solución adaptable, escalable y pensada para crecer con tu negocio.</p>
       </div>
-      <div style="max-width:680px;margin:0 auto">
-        <div class="timeline">
-          <div class="timeline-item fade-up">
-            <div class="timeline-dot">1</div>
-            <div class="timeline-content">
-              <span class="timeline-when">Hoy (sin FORNNO)</span>
-              <h3>Cada cliente que entra es como si fuera la primera vez.</h3>
-              <p>Sin datos, sin sistema, sin fidelización. El 70% no vuelve y no tenés cómo saberlo.</p>
-            </div>
+
+      <!-- Alternating timeline — estilo Stitch adaptado a FORNNO -->
+      <div class="alt-timeline">
+        <div class="alt-timeline__line"></div>
+
+        <!-- Paso 1: contenido izquierda -->
+        <div class="alt-timeline__row">
+          <div class="alt-timeline__content left fade-up">
+            <span class="timeline-when">Hoy (sin FORNNO)</span>
+            <h3 style="font-size:20px;font-weight:800;margin-bottom:8px">Cada cliente que entra es como si fuera la primera vez.</h3>
+            <p>Sin datos, sin sistema, sin fidelización. El 70% no vuelve y no tenés cómo saberlo.</p>
           </div>
-          <div class="timeline-item fade-up" style="transition-delay:.1s">
-            <div class="timeline-dot">2</div>
-            <div class="timeline-content">
-              <span class="timeline-when">Semanas 1–2 · Lanzamiento</span>
-              <h3>El agente WhatsApp activo. El programa de puntos lanzado.</h3>
-              <p>Staff capacitado. Primeras reservas y pedidos automatizados. La base de datos empieza a construirse.</p>
-            </div>
+          <div class="alt-timeline__dot">1</div>
+          <div class="alt-timeline__spacer"></div>
+        </div>
+
+        <!-- Paso 2: contenido derecha -->
+        <div class="alt-timeline__row">
+          <div class="alt-timeline__spacer"></div>
+          <div class="alt-timeline__dot">2</div>
+          <div class="alt-timeline__content right fade-up">
+            <span class="timeline-when">Semanas 1–2 · Lanzamiento</span>
+            <h3 style="font-size:20px;font-weight:800;margin-bottom:8px">El agente WhatsApp activo. El programa de puntos lanzado.</h3>
+            <p>Staff capacitado. Primeras reservas y pedidos automatizados. La base de datos empieza a construirse.</p>
           </div>
-          <div class="timeline-item fade-up" style="transition-delay:.2s">
-            <div class="timeline-dot">3</div>
-            <div class="timeline-content">
-              <span class="timeline-when">Semanas 3–4 · Activación</span>
-              <h3>Ads corriendo. Primeras reactivaciones. Contenido publicado.</h3>
-              <p>El sistema empieza a mostrar resultados. Campañas optimizadas por zona y horario.</p>
-            </div>
+        </div>
+
+        <!-- Paso 3: contenido izquierda -->
+        <div class="alt-timeline__row">
+          <div class="alt-timeline__content left fade-up">
+            <span class="timeline-when">Semanas 3–4 · Activación</span>
+            <h3 style="font-size:20px;font-weight:800;margin-bottom:8px">Ads corriendo. Primeras reactivaciones. Contenido publicado.</h3>
+            <p>El sistema empieza a mostrar resultados. Campañas optimizadas por zona y horario.</p>
           </div>
-          <div class="timeline-item fade-up" style="transition-delay:.3s">
-            <div class="timeline-dot">4</div>
-            <div class="timeline-content">
-              <span class="timeline-when">Mes 3 · Tracción</span>
-              <h3>Efecto referidos visible. Performance trackeando ventas atribuidas.</h3>
-              <p>Los clientes empiezan a traer clientes. El sistema mide cada peso generado.</p>
-            </div>
+          <div class="alt-timeline__dot">3</div>
+          <div class="alt-timeline__spacer"></div>
+        </div>
+
+        <!-- Paso 4: contenido derecha -->
+        <div class="alt-timeline__row">
+          <div class="alt-timeline__spacer"></div>
+          <div class="alt-timeline__dot">4</div>
+          <div class="alt-timeline__content right fade-up">
+            <span class="timeline-when">Mes 3 · Tracción</span>
+            <h3 style="font-size:20px;font-weight:800;margin-bottom:8px">Efecto referidos visible. Performance trackeando ventas atribuidas.</h3>
+            <p>Los clientes empiezan a traer clientes. El sistema mide cada peso generado.</p>
           </div>
-          <div class="timeline-item fade-up" style="transition-delay:.4s">
-            <div class="timeline-dot">🔥</div>
-            <div class="timeline-content">
-              <span class="timeline-when">Mes 6 · Resultados</span>
-              <h3>+35% clientes recurrentes. Ticket +20%. ROI comprobado.</h3>
-              <p>El sistema funciona solo. Los datos son tuyos. El crecimiento es constante.</p>
-            </div>
+        </div>
+
+        <!-- Paso final: 🔥 -->
+        <div class="alt-timeline__row">
+          <div class="alt-timeline__spacer"></div>
+          <div class="alt-timeline__dot fire">🔥</div>
+          <div class="alt-timeline__content right fire-card fade-up">
+            <span class="timeline-when" style="color:var(--orange)">Mes 6 · Resultados</span>
+            <h3 style="font-size:20px;font-weight:800;margin-bottom:8px;color:var(--orange)">+35% clientes recurrentes. Ticket +20%. ROI comprobado.</h3>
+            <p style="font-weight:600">El sistema funciona solo. Los datos son tuyos. El crecimiento es constante.</p>
           </div>
         </div>
       </div>
