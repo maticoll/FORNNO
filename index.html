@@ -1663,5 +1663,25 @@
     })();
   </script>
 
+  <script>
+    /* ── WHATSAPP REDIRECTS ── */
+    (function () {
+      var DEMO = 'https://wa.me/59899796798?text=' + encodeURIComponent('¡Hola! Quiero solicitar una demo de FORNNO para mi restaurante. Me interesa ver el sistema de fidelización, automatización y CRM en acción.');
+      var LLAMADA = 'https://wa.me/59899796798?text=' + encodeURIComponent('¡Hola! Me gustaría agendar una llamada para saber más sobre FORNNO y cómo puede ayudar a mi restaurante. ¿Cuándo tenés disponibilidad?');
+      document.querySelectorAll('a, button').forEach(function (el) {
+        var t = el.textContent.trim().toLowerCase();
+        var isDemo = t.includes('quiero mi demo') || t.includes('solicitar demo') || t.includes('empezar hoy');
+        var isLlamada = t.includes('agendar') && (t.includes('llamada') || t.includes('demo'));
+        if (isDemo) {
+          if (el.tagName === 'A') { el.href = DEMO; el.target = '_blank'; el.rel = 'noopener'; }
+          else { el.addEventListener('click', function (e) { e.preventDefault(); window.open(DEMO, '_blank', 'noopener'); }); }
+        } else if (isLlamada) {
+          if (el.tagName === 'A') { el.href = LLAMADA; el.target = '_blank'; el.rel = 'noopener'; }
+          else { el.addEventListener('click', function (e) { e.preventDefault(); window.open(LLAMADA, '_blank', 'noopener'); }); }
+        }
+      });
+    })();
+  </script>
+
 </body>
 </html>
