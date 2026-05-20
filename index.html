@@ -225,9 +225,23 @@
       .nav-cta { display: none; }
       .hamburger { display: flex; }
       .mobile-menu { display: flex; }
+      .nav-logo img { height: 54px !important; }
       .loyalty-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
       .guarantee-box { padding: 40px 24px !important; }
       .cta-band { padding: 40px 24px !important; }
+      .hero { padding: 100px 0 48px; }
+      .section { padding: 60px 0; }
+      .section-sm { padding: 40px 0; }
+      .feature { padding: 60px 0; }
+      .final-cta { padding: 72px 0; }
+      .footer-inner { flex-direction: column; align-items: center; text-align: center; }
+      .footer-links { flex-wrap: wrap; justify-content: center; gap: 16px; }
+    }
+    @media (max-width: 480px) {
+      .hero-actions { flex-direction: column; align-items: stretch; }
+      .hero-actions .btn { justify-content: center; }
+      .final-cta-actions { flex-direction: column; align-items: stretch; }
+      .final-cta-actions .btn { justify-content: center; }
     }
 
     /* ───── SECTION ───── */
@@ -826,8 +840,7 @@
         <a href="tarjeta-de-lealtad.html">Tarjeta de Lealtad</a>
       </div>
       <div class="nav-cta">
-        <a href="#" class="btn btn-demo" style="padding:11px 22px;font-size:14px">Quiero mi demo</a>
-        <a href="https://wa.me/+549XXXXXXXXX" class="btn btn-primary" style="padding:11px 22px;font-size:14px">Agendar una llamada →</a>
+        <a href="https://wa.me/+549XXXXXXXXX" class="btn btn-primary" style="padding:11px 22px;font-size:14px">Quiero mi demo →</a>
       </div>
       <button class="hamburger" id="hamburger" aria-label="Abrir menú" aria-expanded="false">
         <span></span><span></span><span></span>
@@ -842,8 +855,7 @@
     <a href="#garantia" class="mobile-link">Garantía</a>
     <a href="tarjeta-de-lealtad.html" class="mobile-link">Tarjeta de Lealtad</a>
     <div class="mobile-menu-cta">
-      <a href="#" class="btn btn-secondary">Quiero mi demo</a>
-      <a href="https://wa.me/+549XXXXXXXXX" class="btn btn-primary">Agendar llamada →</a>
+      <a href="https://wa.me/+549XXXXXXXXX" class="btn btn-primary">Quiero mi demo →</a>
     </div>
   </div>
 
@@ -869,11 +881,10 @@
         Tus clientes vuelven. Tu ticket crece. Tu negocio escala.
       </p>
       <div class="hero-actions fade-up" style="transition-delay:.3s">
-        <a href="#" class="btn btn-primary btn-xl">
+        <a href="https://wa.me/+549XXXXXXXXX" class="btn btn-primary btn-xl">
           Quiero mi demo
           <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </a>
-        <a href="https://wa.me/+549XXXXXXXXX" class="btn btn-demo btn-xl">Agendar una llamada</a>
       </div>
     </div>
   </section>
@@ -966,7 +977,7 @@
       </div>
 
       <div style="text-align:center;margin-top:48px" class="fade-up" style="transition-delay:.3s">
-        <a href="#" class="btn btn-primary btn-lg">Quiero mi demo →</a>
+        <a href="https://wa.me/+549XXXXXXXXX" class="btn btn-primary btn-lg">Quiero mi demo →</a>
       </div>
     </div>
   </section>
@@ -1030,7 +1041,7 @@
           <p style="font-size:13px;color:var(--muted);margin-top:4px">Tenemos agentes especializados para cada etapa del negocio: atención, reservas, reactivación de clientes y más. Cada agente se entrena con los datos de tu restaurante.</p>
           <div style="display:flex;gap:12px;flex-wrap:wrap">
             <a href="tus-agentes.html" class="btn btn-primary">Conocé todos los agentes →</a>
-            <a href="https://wa.me/+549XXXXXXXXX" class="btn btn-secondary">Agendar llamada</a>
+            <a href="https://wa.me/+549XXXXXXXXX" class="btn btn-secondary">Quiero mi demo →</a>
           </div>
         </div>
         <div class="feature-visual tilt-card fade-up" style="transition-delay:.15s">
@@ -1082,8 +1093,7 @@
             <li><span class="check"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>Gamificación mensual: desafíos que generan visitas frecuentes</li>
           </ul>
           <div style="display:flex;gap:12px;flex-wrap:wrap">
-            <a href="#" class="btn btn-primary">Quiero mi demo →</a>
-            <a href="https://wa.me/+549XXXXXXXXX" class="btn btn-secondary">Agendar llamada</a>
+            <a href="https://wa.me/+549XXXXXXXXX" class="btn btn-primary">Quiero mi demo →</a>
           </div>
         </div>
         <div class="feature-visual tilt-card fade-up" style="transition-delay:.15s">
@@ -1131,8 +1141,7 @@
             <li><span class="check"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>UGC gestionado: tus clientes generan contenido a cambio de puntos</li>
           </ul>
           <div style="display:flex;gap:12px;flex-wrap:wrap">
-            <a href="#" class="btn btn-primary">Quiero mi demo →</a>
-            <a href="https://wa.me/+549XXXXXXXXX" class="btn btn-secondary">Agendar llamada</a>
+            <a href="https://wa.me/+549XXXXXXXXX" class="btn btn-primary">Quiero mi demo →</a>
           </div>
         </div>
         <div class="feature-visual tilt-card fade-up" style="transition-delay:.15s">
@@ -1177,7 +1186,6 @@
           </ul>
           <div style="display:flex;gap:12px;flex-wrap:wrap">
             <a href="crm-y-automatizacion.html" class="btn btn-primary">Ver CRM y automatización →</a>
-            <a href="#" class="btn btn-secondary">Quiero mi demo</a>
           </div>
         </div>
         <div class="feature-visual tilt-card fade-up" style="transition-delay:.15s">
@@ -1400,8 +1408,7 @@
         <h2>Si no funciona,<br>no te cobramos.</h2>
         <p>Porque si el sistema funciona, se paga solo. Y si no genera resultados, no tiene sentido cobrarte. Sin preguntas. Sin letras chicas.</p>
         <div style="display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap">
-          <a href="#" class="btn btn-primary btn-lg">Quiero mi demo →</a>
-          <a href="https://wa.me/+549XXXXXXXXX" class="btn btn-demo btn-lg">Agendar una llamada</a>
+          <a href="https://wa.me/+549XXXXXXXXX" class="btn btn-primary btn-lg">Quiero mi demo →</a>
         </div>
       </div>
     </div>
@@ -1417,11 +1424,10 @@
         Escribinos y arrancamos esta semana. De cero a sistema activo en 4 semanas.
       </p>
       <div class="final-cta-actions fade-up" style="transition-delay:.2s">
-        <a href="#" class="btn btn-primary btn-xl">
+        <a href="https://wa.me/+549XXXXXXXXX" class="btn btn-primary btn-xl">
           Quiero mi demo
           <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </a>
-        <a href="https://wa.me/+549XXXXXXXXX" class="btn btn-demo btn-xl">💬 Agendar una llamada</a>
       </div>
       <p class="final-cta-note fade-up" style="transition-delay:.3s">
         Sin contratos anuales · Sin comisiones ocultas · Si no funciona, no te cobramos
@@ -1689,10 +1695,6 @@
         if (isDemo) {
           if (el.tagName === 'A') { el.href = DEMO; el.target = '_blank'; el.rel = 'noopener'; }
           else { el.addEventListener('click', function (e) { e.preventDefault(); window.open(DEMO, '_blank', 'noopener'); }); }
-        } else if (isLlamada) {
-          if (el.tagName === 'A') { el.href = LLAMADA; el.target = '_blank'; el.rel = 'noopener'; }
-          else { el.addEventListener('click', function (e) { e.preventDefault(); window.open(LLAMADA, '_blank', 'noopener'); }); }
-        }
       });
     })();
   </script>
