@@ -1628,6 +1628,9 @@
           if (introOverlay.parentNode) introOverlay.parentNode.removeChild(introOverlay);
         }, 450);
 
+        // Imagen según tamaño de pantalla
+        zoomImg.src = window.innerWidth <= 768 ? 'home-preview-mobile.png' : 'home-preview.png';
+
         // Mostrar zoom overlay
         zoomOverlay.classList.add('active');
 
