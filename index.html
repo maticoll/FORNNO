@@ -793,6 +793,7 @@
       height: 100vh;
       object-fit: cover;
       display: block;
+      background: #F5F0E8;
       transform: scale(0.04);
       transform-origin: center center;
       filter: blur(14px) brightness(0.4);
@@ -803,6 +804,12 @@
     #zoom-img.zooming {
       transform: scale(0.99);
       filter: blur(0px) brightness(1);
+    }
+    @media (max-width: 768px) {
+      #zoom-img {
+        object-fit: contain;
+        background: #F5F0E8;
+      }
     }
 
     /* ── Contenido real: fade-in que arranca antes de que el zoom termine
@@ -1611,6 +1618,9 @@
       var wrapper      = document.getElementById('main-wrapper');
       var phase        = 0; // 0=video corriendo, 1=zoom corriendo, 2=terminado
 
+      // Pre-cargar la imagen correcta según pantalla (evita flash de imagen desktop en mobile)
+      zoomImg.src = window.innerWidth <= 768 ? 'home-preview-mobile.png' : 'home-preview.png';
+
       document.body.classList.add('intro-active');
 
       // ── FASE 1: video termina → arranca zoom del screenshot ──
@@ -1627,9 +1637,6 @@
         setTimeout(function () {
           if (introOverlay.parentNode) introOverlay.parentNode.removeChild(introOverlay);
         }, 450);
-
-        // Imagen según tamaño de pantalla
-        zoomImg.src = window.innerWidth <= 768 ? 'home-preview-mobile.png' : 'home-preview.png';
 
         // Mostrar zoom overlay
         zoomOverlay.classList.add('active');
