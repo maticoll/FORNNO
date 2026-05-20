@@ -183,7 +183,7 @@
     .stats-row { display:grid; grid-template-columns:repeat(3,1fr); }
     .stat-item { text-align:center; padding:0 24px; border-right:1px solid var(--border); }
     .stat-item:last-child { border-right:none; }
-    .stat-num { font-family:'Brice',sans-serif; font-size:54px; font-weight:900; color:var(--orange); line-height:1; display:block; }
+    .stat-num { font-family:'Brice',sans-serif; font-size:clamp(36px,8vw,54px); font-weight:900; color:var(--orange); line-height:1; display:block; }
     .stat-label { font-size:13px; color:var(--muted); margin-top:6px; line-height:1.4; }
 
     /* ── CTA BAND ── */
@@ -268,11 +268,15 @@
       .nav-logo img { height:54px !important; }
       .feature-grid { grid-template-columns:1fr; gap:40px; }
       .feature-grid.reverse { direction:ltr; }
+      .feature-visual { padding:24px; min-height:auto; }
       .bento-grid { grid-template-columns:1fr; }
+      .bento-card { padding:20px 18px; }
       .bento-card.span2 { grid-column:span 1; }
+      .stats-strip { padding:32px 0; }
       .stats-row { grid-template-columns:1fr; }
-      .stat-item { border-right:none; border-bottom:1px solid var(--border); padding:24px; }
+      .stat-item { border-right:none; border-bottom:1px solid var(--border); padding:20px 24px; }
       .stat-item:last-child { border-bottom:none; }
+      .dash-card-val { font-size:22px; }
       .cta-band { padding:40px 24px !important; }
       .page-hero { padding:100px 0 60px; }
       .section { padding:60px 0; }
@@ -282,6 +286,8 @@
     }
     @media (max-width:480px) {
       .page-hero { padding:90px 0 48px; }
+      .feature-content p { font-size:15px; }
+      .btn-lg { font-size:15px !important; padding:15px 24px !important; }
       .cta-band-actions { flex-direction:column; align-items:stretch; }
       .cta-band-actions .btn { justify-content:center; }
     }
